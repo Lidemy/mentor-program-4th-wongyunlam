@@ -1,37 +1,62 @@
-// 拿到所有資料
-function solve(lines) {
-  // 5 200 => ['5', '200']
-  let temp = lines[0].split(' ')
-  let n = Number(temp[0])
-  let m = Number(temp[1])
-  for(let i=n; i<=m; i++) {
+
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-else-return */
+/* eslint-disable no-undef */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-const-assign */
+const readline = require('readline');
+
+const lines = [];
+const rl = readline.createInterface({
+  input: process.stdin,
+});
+
+rl.on('line', (line) => {
+  lines.push(line);
+});
+
+rl.on('close', () => {
+  /* eslint-disable-next-line */
+  solve(lines);
+});
+
+function solve(input) {
+  const line = input[0];
+  const temp = line.split(' ');
+  const n = Number(temp[0]);
+  const m = Number(temp[1]);
+  for (let i = n; i <= m; i += 1) {
     if (isNarcissistic(i)) {
-      console.log(i)
+      console.log(i);
     }
   }
 }
 
-// 回傳數字幾位數
-function digitsCount(n) {
-  if (n===0) return 1
-  let result = 0
-  while(n != 0) {
-    n = Math.floor( n / 10)
-    result++
+numCount = (n) => {
+  let result = 0;
+  if (n === 0) {
+    return 1;
   }
-  return result
-}
+  while (n !== 0) {
+    const m = n;
+    m = Math.floor(n / 10);
+    result++;
+  }
+  return result;
+};
 
-function isNarcissistic(n) {
-  // 幾位數
-  let m = n
-  let digits = digitsCount(m)
-  let sum = 0
-  while (m != 0) {
-    let num = m % 10
-    // 可改成 Math.pow(num, digits)
-    sum += num ** digits
-    m = Math.floor(m / 10)
+isNarcissistic = (n) => {
+  const m = n;
+  const total = numCount(n);
+  let sum = 0;
+  while (m !== 0) {
+    const num = m % 10;
+    sum += num ** total;
+    m = Math.floor(m / 10);
   }
-  return sum === n;
-}
+  if (sum === n) {
+    return true;
+  } else {
+    return false;
+  }
+};
