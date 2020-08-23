@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 ## 請以自己的話解釋 API 是什麼
 API 英文為 Application Programming Interface，應用程式介面，簡單來說就是資料交換的一個介面。
 這麼多好像很抽象，就像販賣機一般，你如何跟販賣機溝通，以按鈕告訴販賣機你要什麼飲料，但你不必特別了解販賣機如何從使用者按下按鈕到飲料輸出的過程。因此API在資訊產業當中，就是扮演販賣機的角色，我想要串接 google map 的地圖，我不用完全了解背後邏輯，我只需要透過 api 文檔，知道如何拿到我想要的資料就夠了，使用 api 的好處是讓資料交換有一個統一的規範與操作說明書，而不是胡亂沒規則的亂取亂用，正常來說會透過各種請求，並狹帶一些 token，證明你是透過認證取得資料。
@@ -24,3 +26,4 @@ url : https://api.happy-eating
 | 新增餐廳   | POST   | /restaurants     | name: 餐廳名, 地點, menu 等 | 無 |
 | 刪除餐廳   | DELETE   | /restaurants/:id  | 無 | 無              |
 | 更改餐廳資訊   | PATCH   | /restaurants/:id  | name: 餐廳名, 地點, menu 等 | 無 |
+>>>>>>> 788adf6f1f15d46cf23de58207f1fe3d205ddff2
