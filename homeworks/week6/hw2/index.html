@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>lazy-form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="
+    https://necolas.github.io/normalize.css/8.0.1/normalize.css"/>
+  
+  <style>
+    .top__bar {
+      
+      padding-top: 10px;
+      background: #fad312;
+    }
+    
+    .bg {
+      font-family: "Times New Roman";
+      padding: 50px;
+      max-width: 645px;
+      max-height: 1085px;
+    }
+    
+    .title {
+      font-weight: bold;
+      font-size: 36px;
+    }
+    
+    .info {
+      font-size: 14px;
+    }
+    
+    .info__date {
+      margin-top: 40px;
+    }
+    
+    .info__location {
+      margin-top: 10px;
+    }
+    
+    .star__sign {
+      font-size: 15px;
+    }
+    
+    .must__red {
+      margin-top: 20px;
+      color: red;
+    }
+    
+    .item {
+      margin-top: 60px;
+      font-size: 20px;
+    }
+    
+    .recommendation{
+      margin-top: 20px;
+    }
+    
+    .input__bar {
+      margin-top: 20px;
+    }
+    
+    .radio__bar {
+      margin-top: 20px;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+    
+    .submit__button {
+      display: inline-block;
+      padding: 20px 46px;
+      background: #fad312;
+      font-size: 15px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: transform 0.1s ease-in;
+    }
+    
+    .submit__button:hover {
+      transform: scale(1.1);
+    }
+    
+    .warning {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  
+  </style>
+</head>
+<div class="top__bar"></div>
+<div class="bg">
+  <div class="title">
+    新拖延運動報名表單
+  </div>
+  <div class="info">
+    <div class="info__date">活動日期：2020/12/10 ~ 2020/12/11</div>
+    <div class="info__location">活動地點：台北市大安區新生南路二段1號</div>
+    <div class="must__red" class="star__sign">* 必填</div>
+  </div>
+  <div class="items">
+    <div class="item">暱稱
+      <span class="must__red"> *
+        </span>
+    </div>
+    <div class="input__bar">
+      <input type="text" placeholder="你的回答">
+    </div>
+    <div class="item">電子郵件
+      <span class="must__red"> *
+        </span>
+    </div>
+    <div class="input__bar">
+      <input type="text" placeholder="您的電子郵件">
+    </div>
+    <div class="item">手機號碼
+      <span class="must__red"> *
+        </span>
+    </div>
+    <div class="input__bar">
+      <input type="text" placeholder="您的手機號碼">
+    </div>
+    <div class="item">報名類型
+      <span class="must__red"> *
+        </span>
+    </div>
+    <div class="input__bar">
+      <div class="radio__bar">
+        <input type="radio" name="reason"> 躺在床上用想像力實作
+      </div>
+      <div class="radio__bar">
+        <input type="radio"name="reason"> 趴在地上滑手機找現成的
+      </div>
+    </div>
+    <div class="item">怎麼知道這個活動的 ?
+      <span class="must__red"> *</span>
+    </div>
+    <div class="input__bar">
+      <input type="text" placeholder="您的回答">
+    </div>
+    <div class="item">其他</div>
+    <div class="recommendation">
+      <span>對活動的一些建議</span>
+    </div>
+    <div class="input__bar">
+      <input type="text" placeholder="你的回答">
+    </div>
+    <div class="item">
+      <div class="submit__button">
+        <span>提交</span>
+      </div>
+    </div>
+    <div class="warning">
+      <span>請勿透過表單送出您的密碼。</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
