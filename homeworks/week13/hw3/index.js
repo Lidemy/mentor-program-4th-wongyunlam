@@ -1,0 +1,93 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-plusplus */
+// const request = new XMLHttpRequest();
+const BASE_URL = 'https://api.twitch.tv/kraken/streams/?game=';
+const CLIENT_ID = 'g81urzfeshmfzigurropa59jh4vlu0';
+
+function getGamesTitle(data) {
+  const games = data;
+  const topGames = games.top.map(game => game.game.name);
+  for (let i = 0; i < topGames.length; i++) {
+    const li = document.createElement('li');
+    li.classList.add('games');
+    li.innerText = topGames[i];
+    document.querySelector('.game__title').innerText = topGames[0];
+    document.querySelector('ul').appendChild(li);
+  }
+  getStreams(topGames[0]);
+}
+
+async function getGames() {
+  const response = await fetch('https://api.twitch.tv/kraken/games/top?limit=5', {
+    headers: {
+      'Client-ID': CLIENT_ID,
+      Accept: 'application/vnd.twitchtv.v5+json',
+    },
+  });
+  const data = await response.json();
+  return data;
+}
+
+getGames()
+  .then(getGamesTitle)
+
+
+// 遊戲的實況
+function streams(data) {
+  const stream = data.streams;
+  appendStreams(stream);
+}
+
+// 拿遊戲的實況並載入
+async function getStreams(name) {
+  const response = await fetch(`${BASE_URL}${encodeURIComponent(name)}&limit=20`, {
+    headers: {
+      'Client-ID': CLIENT_ID,
+      Accept: 'application/vnd.twitchtv.v5+json',
+    },
+  })
+  const data = await response.json()
+  streams(data)
+}
+
+// 點選直播
+document.querySelector('.nav__top5').addEventListener('click', (e) => {
+  if (e.target.tagName.toLowerCase() === 'li') {
+    const text = e.target.innerText;
+    document.querySelector('.streams').innerHTML = '';
+    document.querySelector('.game__title').innerText = text;
+    getStreams(text);
+  }
+});
+
+// 載入直播
+function appendStreams(streams) {
+  streams.forEach((stream) => {
+    const div = document.createElement('div');
+    div.classList.add('stream__game');
+    div.innerHTML = `
+        <div class="preview">
+            <img class="stream__pic" src=${stream.preview.medium} >
+        </div>
+        <div class="content">
+            <div class="logo">
+                <img class="stream__logo" src=${stream.channel.logo}>
+            </div>
+            <div class="text">
+                <div class="stream__title">${stream.channel.status}</div>
+                <div class="stream__name">${stream.channel.display_name}</div>
+            </div>
+        </div>`;
+    document.querySelector('.streams').appendChild(div);
+  });
+  addEmptyBlock();
+  addEmptyBlock();
+}
+
+// 預防跑版
+function addEmptyBlock() {
+  const emptyBlock = document.createElement('div');
+  emptyBlock.classList.add('game-empty');
+  document.querySelector('.streams').appendChild(emptyBlock);
+}
