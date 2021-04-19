@@ -1,8 +1,34 @@
 document
-  .querySelector('.faq__block')
-  .addEventListener('click', (e) => {
-    const element = e.target.closest('.faq__item');
+  .querySelector('.faq-block')
+  .addEventListener('click', function(e) {
+    console.log(e.target.classList.value)
+    const element = closest(e.target, 'faq-item')
     if (element) {
-      e.target.closest('.faq__item').classList.toggle('faq__item-hide');
+      console.log(element)
+      element.classList.toggle('faq-item--hide')
     }
-  });
+  })
+
+
+
+function closest(node, className) {
+  while(node && node.classList) {
+    if (node.classList.contains(className)) {
+      return node
+    }
+    node = node.parentNode
+  }
+}      
+
+/*
+document
+  .querySelector('.faq-block')
+  .addEventListener('click', function(e) {
+    console.log(e.target)
+    const element = e.target.closest('.faq-item') // Js 提供的 closest function
+    if (element) {
+      console.log(element)
+      element.classList.toggle('faq-item--hide')
+    }
+  })
+*/
